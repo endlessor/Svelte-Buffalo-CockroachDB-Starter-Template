@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  roach1:
+    container_name: roach1
+    image: cockroachdb/cockroach:v1.1.3
+    command: start --insecure
+    ports:
+      - "26257:26257"
+      - "8080:8080"
+    volumes:
+      - ./cockroach-data/roach1:/cockroach/cockroach-data
+    networks:
+      roachnet:
+        aliases:
+          - roach1
